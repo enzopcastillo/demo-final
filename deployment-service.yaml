@@ -1,35 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-nginx
+  name: k8s-final
 spec:
   selector:
     matchLabels:
-      app: k8s-nginx
+      app: k8s-final
   replicas: 2 
   template:
     metadata:
       labels:
-        app: k8s-nginx
+        app: k8s-final
     spec:
       containers:
-        - name: k8s-nginx
+        - name: k8s-final
           image: enzopcastillo/demo-final 
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8090 # The port that the container is running on in the cluster
+            - containerPort: 8081 # The port that the container is running on in the cluster
 
 ---
 
 apiVersion: v1 
 kind: Service
 metadata: 
-  name: k8s-nginx
+  name: k8s-final
 spec:
   selector:
-    app: k8s-nginx
+    app: k8s-final
   ports:
     - protocol: "TCP"
-      port: 8080 # The port that the service is running on in the cluster
-      targetPort: 8090 # The port exposed by the service
+      port: 8081 # The port that the service is running on in the cluster
+      targetPort: 8081 # The port exposed by the service
   type: NodePort
