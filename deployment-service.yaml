@@ -17,7 +17,7 @@ spec:
           image: enzopcastillo/demo-final 
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8081 # The port that the container is running on in the cluster
+            - containerPort: 8080 # The port that the container is running on in the cluster
 
 ---
 
@@ -30,6 +30,6 @@ spec:
     app: k8s-final
   ports:
     - protocol: "TCP"
-      port: 8081 # The port that the service is running on in the cluster
-      targetPort: 8081 # The port exposed by the service
+      port: 8080 # The port that the service is running on in the cluster
+      targetPort: 8080 # The port exposed by the service
   type: NodePort
